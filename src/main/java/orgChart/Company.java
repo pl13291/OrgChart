@@ -20,6 +20,11 @@ public class Company implements CompanyContract {
     }
 
     public void addEmployee(Employee newEmployee) {
+        
+        if (employeesHashMap.keySet().contains(newEmployee.getId())) {
+            System.out.println("Id is not unique! user not added!");
+            return;
+        }
 
         //Handle special case - CEO has no manager
         if (newEmployee.getPosition() == Position.CEO) {
